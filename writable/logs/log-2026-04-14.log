@@ -1,0 +1,912 @@
+DEBUG - 2026-04-14 00:00:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:00:42 --> Unknown column 'likes.post_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:00:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'likes.post_id' in 'on clause'
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:00:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'likes.post_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:00:42 --> [Caused by] mysqli_sql_exception: Unknown column 'likes.post_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `usuarios`.`nome`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:10:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-14 00:10:08 --> Error: Class "App\Models\PostagemModel" not found
+[Method: GET, Route: feed]
+in APPPATH\Controllers\PostController.php on line 13.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:11:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:11:13 --> Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:13 --> [Caused by] mysqli_sql_exception: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:11:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:11:15 --> Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:15 --> [Caused by] mysqli_sql_exception: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:11:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:11:31 --> Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:11:31 --> [Caused by] mysqli_sql_exception: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:12:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:12:24 --> Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:12:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:12:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:12:24 --> [Caused by] mysqli_sql_exception: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:12:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:12:56 --> Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:12:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:12:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:12:56 --> [Caused by] mysqli_sql_exception: Table 'academico_net.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `users` ON `users`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 00:13:35 --> Unknown column 'users.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:13:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'users.name' in 'field list'
+[Method: GET, Route: feed]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:13:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'users.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+CRITICAL - 2026-04-14 00:13:35 --> [Caused by] mysqli_sql_exception: Unknown column 'users.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `postagens`.*, `users`.`name`, COUNT(likes.id) as total_likes
+FROM `postagens`
+JOIN `usuarios` ON `usuarios`.`id` = `postagens`.`usuario_id`
+LEFT JOIN `likes` ON `likes`.`post_id` = `postagens`.`id`
+GROUP BY `postagens`.`id`
+ORDER BY `postagens`.`created_at` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\PostagemModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\PostController.php(16): App\Models\PostagemModel->getPosts()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:15:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-14 00:15:03 --> Error: Class "App\Models\PostagemModel" not found
+[Method: GET, Route: feed]
+in APPPATH\Controllers\PostController.php on line 13.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\PostController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PostController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\Usuario\\Desktop\\rede-social\\public\\index.php')
+DEBUG - 2026-04-14 00:15:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
