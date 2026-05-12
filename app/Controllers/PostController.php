@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PostagemModel;
 use App\Models\LikeModel;
 use App\Models\ComentarioModel;
+use App\Models\UsuarioModel;
 
 class PostController extends BaseController
 {
@@ -35,7 +36,16 @@ class PostController extends BaseController
                 ->findAll();
         }
 
-        return view('feed/index', ['posts' => $posts]);
+        $usuarioModel = new UsuarioModel();
+        $sugestoes = $usuarioModel
+            ->where('id !=', session()->get('usuario_id'))
+            ->orderBy('id', 'RANDOM')
+            ->findAll(3);
+
+        return view('feed/index', [
+            'posts' => $posts,
+            'sugestoes' => $sugestoes
+        ]);
     }
 
     public function create()
@@ -161,5 +171,18 @@ class PostController extends BaseController
             ->findAll(5, $offset);
 
         return $this->response->setJSON($posts);
+    }
+
+    public function deleteComentario($id)
+    {
+        $comentarioModel = new ComentarioModel();
+        $comentario = $comentarioModel->find($id);
+
+        if ($comentario && $comentario['usuario_id'] == session()->get('usuario_id')) {
+            $comentarioModel->delete($id);
+            return redirect()->back()->with('success', 'Comentário excluído.');
+        }
+
+        return redirect()->back()->with('error', 'Não autorizado.');
     }
 }

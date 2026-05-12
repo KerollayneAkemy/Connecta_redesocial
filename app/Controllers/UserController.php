@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\UsuarioModel;
 use App\Models\PostagemModel;
 use App\Models\SeguidorModel;
+use App\Models\LikeModel;
+use App\Models\ComentarioModel;
 
 class UserController extends BaseController
 {
@@ -22,10 +24,33 @@ class UserController extends BaseController
 
         $usuario = $usuarioModel->find($userId);
 
+        $likeModel = new LikeModel();
+        $comentarioModel = new ComentarioModel();
+
         $posts = $postModel
             ->where('usuario_id', $userId)
             ->orderBy('created_at', 'DESC')
             ->findAll();
+
+        foreach ($posts as &$post) {
+            $post['nome'] = $usuario['nome']; // for view consistency
+
+            $post['likes'] = $likeModel
+                ->where('postagem_id', $post['id'])
+                ->countAllResults();
+
+            $post['curtiu'] = $likeModel
+                ->where('postagem_id', $post['id'])
+                ->where('usuario_id', $userId)
+                ->first() ? true : false;
+                
+            $post['comentarios'] = $comentarioModel
+                ->select('comentarios.*, usuarios.nome')
+                ->join('usuarios', 'usuarios.id = comentarios.usuario_id')
+                ->where('postagem_id', $post['id'])
+                ->orderBy('comentarios.id', 'ASC')
+                ->findAll();
+        }
 
         $seguidores = $seguidorModel->where('seguido_id', $userId)->countAllResults();
         $seguindo = $seguidorModel->where('seguidor_id', $userId)->countAllResults();
@@ -41,10 +66,35 @@ class UserController extends BaseController
 
         $usuario = $usuarioModel->find($id);
 
+        $likeModel = new LikeModel();
+        $comentarioModel = new ComentarioModel();
+
         $posts = $postModel
             ->where('usuario_id', $id)
             ->orderBy('created_at', 'DESC')
             ->findAll();
+
+        $meuId = session()->get('usuario_id');
+
+        foreach ($posts as &$post) {
+            $post['nome'] = $usuario['nome']; // for view consistency
+
+            $post['likes'] = $likeModel
+                ->where('postagem_id', $post['id'])
+                ->countAllResults();
+
+            $post['curtiu'] = $likeModel
+                ->where('postagem_id', $post['id'])
+                ->where('usuario_id', $meuId)
+                ->first() ? true : false;
+                
+            $post['comentarios'] = $comentarioModel
+                ->select('comentarios.*, usuarios.nome')
+                ->join('usuarios', 'usuarios.id = comentarios.usuario_id')
+                ->where('postagem_id', $post['id'])
+                ->orderBy('comentarios.id', 'ASC')
+                ->findAll();
+        }
 
         $meuId = session()->get('usuario_id');
 

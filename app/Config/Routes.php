@@ -44,6 +44,7 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('/post/dislike/(:num)', 'PostController::dislike/$1');
 
     $routes->post('/post/comentar/(:num)', 'PostController::comentar/$1');
+    $routes->get('/comentario/delete/(:num)', 'PostController::deleteComentario/$1');
 
     $routes->get('/follow/(:num)', 'UserController::follow/$1');
 });

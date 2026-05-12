@@ -238,6 +238,10 @@
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             Feed
         </a>
+        <a class="header-btn" href="/logout" style="color: #f87171; border-color: rgba(248, 113, 113, 0.2);">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+            Sair
+        </a>
     </div>
 </header>
 
@@ -301,6 +305,59 @@
                         <img src="/uploads/<?= esc($post['imagem']) ?>" alt="Post Image" class="post-image">
                     <?php endif; ?>
                 </div>
+
+                <div class="actions" style="display: flex; gap: 12px; padding-left: 52px;">
+                    <button class="action-btn like <?= $post['curtiu'] ? 'active' : '' ?>" onclick="toggleLike(<?= $post['id'] ?>, this)" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: <?= $post['curtiu'] ? '#ec4899' : 'var(--text-muted)' ?>; padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; text-decoration: none;">
+                        <svg width="14" height="14" fill="<?= $post['curtiu'] ? 'currentColor' : 'none' ?>" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span class="like-count"><?= $post['likes'] ?></span> Curtidas
+                    </button>
+
+                    <?php if($post['usuario_id'] == session()->get('usuario_id')): ?>
+                        <a href="/post/edit/<?= $post['id'] ?>" class="action-btn edit" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--text-muted); padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; text-decoration: none;">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            Editar
+                        </a>
+                        
+                        <a href="/post/delete/<?= $post['id'] ?>" class="action-btn delete" onclick="return confirm('Tem certeza que deseja excluir esta postagem?');" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--text-muted); padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; text-decoration: none;">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Excluir
+                        </a>
+                    <?php endif; ?>
+                </div>
+
+                <div class="comments-section" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--glass-border);">
+                    <h4 style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px; font-weight: 500;">Comentários (<?= count($post['comentarios'] ?? []) ?>)</h4>
+                    
+                    <?php if(!empty($post['comentarios'])): ?>
+                        <div class="comments-list" style="margin-bottom: 15px;">
+                            <?php foreach($post['comentarios'] as $comentario): ?>
+                                <div class="comment-item" style="background: rgba(255,255,255,0.02); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between;">
+                                    <div>
+                                        <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 4px;">
+                                            <?= esc($comentario['nome']) ?>
+                                        </div>
+                                        <div style="font-size: 14px; color: #cbd5e1; line-height: 1.4;">
+                                            <?= nl2br(esc($comentario['texto'])) ?>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 11px; color: var(--text-muted); white-space: nowrap; display: flex; align-items: center; gap: 8px;">
+                                        <?= !empty($comentario['created_at']) ? date('H:i', strtotime($comentario['created_at'])) : '' ?>
+                                        <?php if($comentario['usuario_id'] == session()->get('usuario_id')): ?>
+                                            <a href="/comentario/delete/<?= $comentario['id'] ?>" onclick="return confirm('Excluir comentário?');" style="color: #f87171; text-decoration: none;" title="Excluir">
+                                                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <form action="/post/comentar/<?= $post['id'] ?>" method="post" style="display: flex; gap: 10px;">
+                        <input type="text" name="texto" placeholder="Escreva um comentário..." required style="flex: 1; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; padding: 10px 14px; color: var(--text-main); font-size: 14px; outline: none; transition: border-color 0.3s;">
+                        <button type="submit" style="background: linear-gradient(135deg, var(--primary), #8b5cf6); color: white; border: none; border-radius: 8px; padding: 0 20px; font-weight: 600; cursor: pointer; transition: transform 0.2s;">Enviar</button>
+                    </form>
+                </div>
             </div>
         <?php endforeach; ?>
     <?php else: ?>
@@ -310,5 +367,32 @@
     <?php endif; ?>
 
 </div>
+
+<script>
+    async function toggleLike(postId, btn) {
+        const isActive = btn.classList.contains('active');
+        const url = isActive ? `/post/dislike/${postId}` : `/post/like/${postId}`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if(data.ok) {
+                btn.classList.toggle('active');
+                
+                const svg = btn.querySelector('svg');
+                svg.setAttribute('fill', !isActive ? 'currentColor' : 'none');
+                btn.style.color = !isActive ? '#ec4899' : 'var(--text-muted)';
+                
+                const countSpan = btn.querySelector('.like-count');
+                let count = parseInt(countSpan.textContent);
+                countSpan.textContent = !isActive ? count + 1 : count - 1;
+            }
+        } catch (error) {
+            console.error('Erro ao curtir/descurtir:', error);
+        }
+    }
+</script>
+
 </body>
 </html>

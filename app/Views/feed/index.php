@@ -464,9 +464,14 @@
                                                 <?= nl2br(esc($comentario['texto'])) ?>
                                             </div>
                                         </div>
-                                        <div style="font-size: 11px; color: var(--text-muted); white-space: nowrap;">
-                                            <?= !empty($comentario['created_at']) ? date('H:i', strtotime($comentario['created_at'])) : '' ?>
-                                        </div>
+                                    <div style="font-size: 11px; color: var(--text-muted); white-space: nowrap; display: flex; align-items: center; gap: 8px;">
+                                        <?= !empty($comentario['created_at']) ? date('H:i', strtotime($comentario['created_at'])) : '' ?>
+                                        <?php if($comentario['usuario_id'] == session()->get('usuario_id')): ?>
+                                            <a href="/comentario/delete/<?= $comentario['id'] ?>" onclick="return confirm('Excluir comentário?');" style="color: #f87171; text-decoration: none;" title="Excluir">
+                                                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -492,10 +497,29 @@
     <aside class="sidebar">
         
         <div class="sidebar-widget">
-            <div class="widget-title">Para Você</div>
-            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 10px;">
-                Bem-vindo à Connecta! Interaja com as postagens, adicione imagens e encontre pessoas interessantes para seguir.
-            </div>
+            <div class="widget-title">Sugestões para seguir</div>
+            
+            <?php if(isset($sugestoes) && count($sugestoes) > 0): ?>
+                <?php foreach($sugestoes as $sugestao): ?>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="avatar" style="width: 32px; height: 32px; font-size: 14px;">
+                                <?= strtoupper(substr($sugestao['nome'], 0, 1)) ?>
+                            </div>
+                            <div style="font-size: 14px; font-weight: 600;">
+                                <a href="/perfil/<?= $sugestao['id'] ?>" style="color: var(--text-main); text-decoration: none;"><?= esc($sugestao['nome']) ?></a>
+                            </div>
+                        </div>
+                        <a href="/follow/<?= $sugestao['id'] ?>" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; text-decoration: none; transition: background 0.2s;">
+                            Seguir
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+                    Não há sugestões no momento.
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="sidebar-widget">
