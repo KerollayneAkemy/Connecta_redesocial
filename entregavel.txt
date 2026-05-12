@@ -1,0 +1,123 @@
+Aqui estão os códigos dos arquivos solicitados para o projeto de Autenticação.
+
+===== 1. Filtro de Autenticação (app/Filters/AuthFilter.php) =====
+
+<?php
+namespace App\Filters;
+
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\Filters\FilterInterface;
+
+class AuthFilter implements FilterInterface
+{
+    public function before(RequestInterface $request, $arguments = null)
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Faça login primeiro.');
+        }
+    }
+
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
+    {
+        // Não necessário
+    }
+}
+
+===== 2. Registro do Filtro (app/Config/Filters.php) - Trecho Principal =====
+
+// Em public array $aliases = [ ...
+    'auth' => \App\Filters\AuthFilter::class,
+// ];
+
+===== 3. Rotas Protegidas (app/Config/Routes.php) - Trecho Principal =====
+
+$routes->get('/', fn() => redirect()->to('/login'));
+
+// LOGIN e CADASTRO... (rotas abertas)
+
+$routes->group('', ['filter' => 'auth'], function($routes) {
+    $routes->get('/dashboard', 'PostController::index');
+    $routes->get('/feed', 'PostController::index');
+    $routes->post('/postar', 'PostController::create');
+    $routes->get('/perfil', 'UserController::meuPerfil');
+    $routes->get('/perfil/(:num)', 'UserController::perfil/$1');
+    $routes->get('/post/create', 'PostController::create');
+    $routes->get('/post/edit/(:num)', 'PostController::edit/$1');
+    // ...
+});
+
+===== 4. Controller de Autenticação (app/Controllers/AuthController.php) =====
+
+<?php
+namespace App\Controllers;
+
+use App\Models\UsuarioModel;
+
+class AuthController extends BaseController
+{
+    public function register() { return view('auth/register'); }
+
+    public function store()
+    {
+        helper(['form']);
+        $rules = [
+            'nome' => 'required|min_length[3]',
+            'email' => 'required|valid_email|is_unique[usuarios.email]',
+            'senha' => 'required|min_length[6]',
+            'confirmar_senha' => 'matches[senha]'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('error', 'Verifique os campos do formulário.');
+        }
+
+        $model = new UsuarioModel();
+        $model->save([
+            'nome' => $this->request->getPost('nome'),
+            'email' => $this->request->getPost('email'),
+            'senha' => password_hash($this->request->getPost('senha'), PASSWORD_DEFAULT)
+        ]);
+
+        return redirect()->to('/login')->with('success', 'Cadastro realizado com sucesso.');
+    }
+
+    public function login() { return view('auth/login'); }
+
+    public function auth()
+    {
+        $model = new UsuarioModel();
+        $email = $this->request->getPost('email');
+        $senha = $this->request->getPost('senha');
+
+        $usuario = $model->where('email', $email)->first();
+
+        if ($usuario && password_verify($senha, $usuario['senha'])) {
+            session()->regenerate();
+            session()->set([
+                'usuario_id' => $usuario['id'],
+                'nome' => $usuario['nome'],
+                'email' => $usuario['email'],
+                'isLoggedIn' => true
+            ]);
+
+            return redirect()->to('/feed')->with('success', 'Bem-vindo, ' . $usuario['nome']);
+        }
+
+        return redirect()->back()->with('error', 'Credenciais inválidas.');
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login')->with('success', 'Você saiu da sua conta');
+    }
+}
+
+
+*** INSTRUÇÕES PARA O PRINT ***
+Para completar o Entregável Prático:
+1. Abra a tela de cadastro e crie um usuário. Tire um print.
+2. Faça o login e tire um print do Feed mostrando a mensagem "Bem-vindo, [nome]".
+3. Faça o logout e tire um print da tela de login mostrando "Você saiu da sua conta".
+Anexe este arquivo de texto junto aos seus prints e envie!
